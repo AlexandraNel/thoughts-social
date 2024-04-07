@@ -3,4 +3,12 @@ const { User, Friends, Thoughts } = require('../models')
 
 module.exports = {
 
+    getAllUsers,
+    createUser,
+    getOneUser,
+    updateUser,
+    deleteUser,
+    addFriend,
+    deleteFriend,
+
 };
