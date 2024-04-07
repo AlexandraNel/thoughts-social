@@ -10,13 +10,14 @@ const reactionSchema = new Schema({
         type: Schema.Types.ObjectId,
         default: () => new Types.ObjectId(),
     },
-    reachtionBody: {
+    reactionBody: {
         type: String,
         required: true,
         maxLength: 280,
     },
     username: {
-        type: Schema.Types.ObjectId,
+        type: String,
+        required: true,
         ref: 'user'
     },
     createdAt: {

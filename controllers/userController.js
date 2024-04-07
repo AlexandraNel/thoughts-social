@@ -87,7 +87,7 @@ module.exports = {
         }
     },
 
-    // addFriend to user
+    // add a friend to user
     async addFriend(req, res) {
         try {
             const { userId, friendId } = req.params; //quick way to get both params from route api/users/:userId/friends/:friendId
