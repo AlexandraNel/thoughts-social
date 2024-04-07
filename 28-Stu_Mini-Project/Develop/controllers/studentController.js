@@ -128,7 +128,7 @@ module.exports = {
       const student = await Student.findOneAndUpdate(
         { _id: req.params.studentId },
         { $pull: { assignment: { assignmentId: req.params.assignmentId } } },
-        { runValidators: true, new: true }
+        { runValidators: true, new: true } //new true does teh update= brings it back in
       );
 
       if (!student) {

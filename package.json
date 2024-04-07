@@ -1,7 +1,30 @@
 {
-  "dependencies": {
-    "express": "^4.19.2",
-    "mongodb": "^6.5.0",
-    "mongoose": "^8.3.0"
-  }
+   "scripts": {
+      "start": "node server.js"
+   },
+   "name": "thoughts-social",
+   "description": "a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list",
+   "version": "1.0.0",
+   "main": "server.js",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/AlexandraNel/thoughts-social.git"
+   },
+   "keywords": [
+      "mongodb",
+      "mongoose"
+   ],
+   "author": "Alexandra Nel, MONASH fullstack bootcamp",
+   "license": "MIT",
+   "bugs": {
+      "url": "https://github.com/AlexandraNel/thoughts-social/issues"
+   },
+   "homepage": "https://github.com/AlexandraNel/thoughts-social#readme",
+   "dependencies": {
+      "dayjs": "^1.11.10",
+      "db": "^6.0.3",
+      "express": "^4.19.2",
+      "mongo": "^0.1.0",
+      "mongoose": "^8.3.0"
+   }
 }

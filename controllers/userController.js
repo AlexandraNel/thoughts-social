@@ -1,5 +1,4 @@
-//import models
-const { ObjectId } = require('mongoose').Types; //WHY THIS?
+//import models.. "if you export with curly braces you import with curly braces"
 const { User, Friends, Thoughts } = require('../models')
 
 module.exports = {
