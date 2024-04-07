@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const dayjs = require('dayjs'); //bringing in dayjs library for date formatting)
 const reactionSchema = require('./Reaction');
 
-const thoughtsSchema = new Schema({
+const thoughtSchema = new Schema({
 
     thoughtText: {
         type: String,
@@ -32,9 +32,9 @@ const thoughtsSchema = new Schema({
     });
 
 //create a virtual for reaction count, arrow functio omitted for use with .this
-thoughtsSchema.virtual('reactionCount').get(function () {
+thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 
-const Thoughts = model('thoughts', thoughtsSchema);
-module.exports = Thoughts;
+const Thought = model('Thought', thoughtSchema);
+module.exports = Thought;

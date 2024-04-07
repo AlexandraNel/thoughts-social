@@ -14,17 +14,18 @@ const userSchema = new Schema({
         required: true,
         unique: true,
         trim: true,
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please use a valid email']
+        match: [/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Please use a valid email']
+
     },
     // storing as an array of _id values with ref to schema
     thoughts: [{
         type: Schema.Types.ObjectId,
-        ref: 'thoughts'
+        ref: 'Thought'
     }],
     // storing as an array of _id values with SELF ref to USER schema
     friends: [{
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'User'
     }]
 }, {
     // establishing use of virtuals for comment count, removing id for each retrieved doc as default
@@ -39,5 +40,5 @@ userSchema.virtual('friendCount').get(function () {
     return this.friends.length;
 });
 
-const User = model('user', userSchema);
+const User = model('User', userSchema);
 module.exports = User;

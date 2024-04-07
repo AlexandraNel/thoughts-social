@@ -1,5 +1,5 @@
-const Thoughts = require('./Thoughts');
+const Thought = require('./Thought');
 const User = require('./User');
 
 // "if you export with curly braces you import with curly braces"
-module.exports = { Thoughts, User};
+module.exports = { Thought, User};

@@ -3,7 +3,6 @@
 
 const { Schema, Types } = require('mongoose'); //types needs to be imported for new ObjectId
 const dayjs = require('dayjs'); //for date format
-// const ThoughtsSchema = require('./Thoughts');
 
 const reactionSchema = new Schema({
     // uses imported Types and function to ensure new ObjId for each reactionId
