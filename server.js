@@ -2,6 +2,7 @@
 const express = require('express');
 const db = require('./config/connection');
 const routes = require('./routes');
+const seedDatabase = require('./seed');  
 
 //server port running on 3001 has a .env and storing instance of express in app variable
 const PORT = process.env.PORT || 3001;
@@ -17,6 +18,6 @@ app.use(routes);
 //one time event listener for connection to db, 'once open' express accepts requests to db
 db.once('open', () => {
     app.listen(PORT, () => {
-        console.log(`API server for ${activity} running on port ${PORT}!`);
+        console.log(`API server running on port ${PORT}!`);
     });
 });
