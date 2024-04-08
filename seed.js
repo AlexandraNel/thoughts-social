@@ -17,11 +17,11 @@ const seedUsers = [
 const seedThoughts = [
     { thoughtText: 'Why did the scarecrow become a successful manager? He was outstanding in his field!', createdBy:''},
     { thoughtText: 'I’m multitasking: I can listen, ignore and forget at the same time.', createdBy:''},
-    { thoughtText: 'Keep it simple, but significant.', createdBy:'' },
-    { thoughtText: 'Less Monday, more coffee.', createdBy:''},
-    { thoughtText: 'It’s not about ideas. It’s about making ideas happen.', createdBy:''},
-    { thoughtText: 'Success is a journey, not a destination. Bring snacks.', createdBy:''},
-    { thoughtText: 'I would lose weight, but I hate losing.', createdBy:''}
+    // { thoughtText: 'Keep it simple, but significant.', createdBy:'' },
+    // { thoughtText: 'Less Monday, more coffee.', createdBy:''},
+    //
+    // { thoughtText: 'Success is a journey, not a destination. Bring snacks.', createdBy:''},
+    // { thoughtText: 'I would lose weight, but I hate losing.', createdBy:''}
 ];
 
 

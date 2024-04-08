@@ -91,6 +91,9 @@ module.exports = {
     async addFriend(req, res) {
         try {
             const { userId, friendId } = req.params; //quick way to get both params from route api/users/:userId/friends/:friendId
+            console.log("User ID received:", userId);
+            console.log("Friend ID received:", friendId);
+
 
             //validate user exists
             const user = await User.findById(userId);
@@ -116,8 +119,15 @@ module.exports = {
                 { new: true },) //updated doc returned (returns post-update)
                 .populate('friends');
 
-            if (!userWithFriend) {
-                return res.status(404).json({ message: 'Error adding friend' });
+            //add user to friends friends list also, use $addToSet to prevent duplicates (only adds if doesnt exist)
+            const friendWithFriend = await User.findByIdAndUpdate(
+                friendId,
+                { $addToSet: { friends: userId } },
+                { new: true },) //updated doc returned (returns post-update)
+                .populate('friends');
+
+            if (!friendWithFriend) {
+                return res.status(404).json({ message: 'Error adding you as a friend to the their friends list' });
             }
 
             res.json(userWithFriend)
@@ -133,26 +143,36 @@ module.exports = {
         try {
             const { userId, friendId } = req.params; //quick way to get both params from route api/users/:userId/friends/:friendId
 
-             //check if user exists
-             const user = await User.findById( userId );
-             if (!user) {
-                 return res.status(404).json({ message: 'No such user exists' });
-             }
+            //check if user exists
+            const user = await User.findById(userId);
+            if (!user) {
+                return res.status(404).json({ message: 'No such user exists' });
+            }
 
             //check if friend exists
-            const friend = await User.findById( friendId );
+            const friend = await User.findById(friendId);
             if (!friend) {
                 return res.status(404).json({ message: 'No such friend exists' });
             }
 
             const removedFromUser = await User.findByIdAndUpdate(
                 userId,
-                { $pull: { friends: friendId }},
+                { $pull: { friends: friendId } },
                 { new: true } //return update doc only 
             );
 
             if (!removedFromUser) {
-                return res.status(404).json({message: 'Error removing friend from user'});
+                return res.status(404).json({ message: 'Error removing friend from user' });
+            }
+            //break the two way friendship and remove yourself from friend's array also
+            const removedFromFriend = await User.findByIdAndUpdate(
+                friendId,
+                { $pull: { friends: userId } },
+                { new: true } //return update doc only 
+            );
+
+            if (!removedFromFriend) {
+                return res.status(404).json({ message: 'Error removing you as a friend from the their friends list' });
             }
 
             res.json(removedFromUser);

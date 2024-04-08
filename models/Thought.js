@@ -18,7 +18,7 @@ const thoughtSchema = new Schema({
     //reference the id of the user who created it, and utilise .populate within controllers for string
     createdBy: {
         type: Schema.Types.ObjectId,
-        ref: 'user',
+        ref: 'User',
         required: true
     },
     reactions: [reactionSchema],

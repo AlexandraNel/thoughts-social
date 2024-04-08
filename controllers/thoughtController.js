@@ -32,7 +32,7 @@ module.exports = {
         }
     },
 
-    // create a new thought 
+    // create a new thought add to the thought array AND update the User thought array
     async createThought(req, res) {
         try {
             const thought = await Thought.create(req.body);
@@ -109,11 +109,11 @@ module.exports = {
     // create a reaction
     async createReaction(req, res) {
         try {
-            //get the user who is creating it- so a name can be associated with the react
-            const user = await User.findById(req.body.userId);
-            if (!user) {
-                return res.status(404).json({ message: 'User not found' });
-            }
+            // //get the user who is creating it- so a name can be associated with the react
+            // const user = await User.findById(req.body.userId);
+            // if (!user) {
+            //     return res.status(404).json({ message: 'User not found' });
+            // }
 
             //update the thought by adding a new reaction
             const thought = await Thought.findByIdAndUpdate(
