@@ -109,11 +109,11 @@ module.exports = {
     // create a reaction
     async createReaction(req, res) {
         try {
-            // //get the user who is creating it- so a name can be associated with the react
-            // const user = await User.findById(req.body.userId);
-            // if (!user) {
-            //     return res.status(404).json({ message: 'User not found' });
-            // }
+            //get the user who is creating it- so a name can be associated with the react
+            const user = await User.findById(req.body.userId);
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
 
             //update the thought by adding a new reaction
             const thought = await Thought.findByIdAndUpdate(
@@ -142,12 +142,12 @@ module.exports = {
                       //get thought and delete related reaction data
             const thoughtWithoutReaction = await Thought.findByIdAndUpdate(
                 req.params.thoughtId,
-                { $pull: { reactions: { reactionId: req.body.reactionId } } }, // pull from array via reactionId obj value
+                { $pull: { reactions: { reactionId: req.params.reactionId } } }, // pull from array via reactionId obj value
                 { new: true, } // Return the updated document
 
             );
             if (!thoughtWithoutReaction) {
-                return res.status(404).json({ message: 'Error updating reaction on Tthought' });
+                return res.status(404).json({ message: 'Error deleting reaction' });
             }
 
             res.json(thoughtWithoutReaction);

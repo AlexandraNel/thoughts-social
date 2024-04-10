@@ -76,7 +76,7 @@ module.exports = {
 
             if (thoughts.deletedCount === 0) {
                 return res.status(404).json({
-                    message: 'user deleted, but no thoughts founds',
+                    message: 'user deleted (No thoughts deleted as no thoughts found)',
                 });
             }
 

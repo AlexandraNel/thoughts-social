@@ -15,10 +15,10 @@ const reactionSchema = new Schema({
         required: true,
         maxLength: 280,
     },
-    username: {
+    username: { //attribute the suer name of user 
         type: String,
         required: true,
-        ref: 'user'
+        ref: 'User'
     },
     createdAt: {
         type: Date,
